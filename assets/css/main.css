@@ -1,0 +1,24 @@
+
+
+@font-face {
+    font-family: "Formula1";
+    src: local("Formula1"), url("/fonts/Formula1-Bold_web_0.ttf");
+    format: ("ttf");
+  }
+
+
+  .f1-font {
+  font-family: "Formula1";
+}
+
+
+.video-tag {
+
+
+  color: #949498;
+  font-size: 14px;
+
+
+
+}
+

@@ -1,0 +1,183 @@
+<template>
+  <div>
+    <div class="row buttons-slide d-flex">
+      <div class="col-6">
+        <b-button variant="transparent" @click="showPrev()">
+          <b-icon-chevron-left
+            variant="white"
+            style="width: 60px; height: 60px"
+          ></b-icon-chevron-left>
+        </b-button>
+      </div>
+      <div class="col-6 d-flex justify-content-end">
+        <b-button variant="transparent" @click="showNext()">
+          <b-icon-chevron-right
+            variant="white"
+            style="width: 60px; height: 60px"
+          ></b-icon-chevron-right>
+        </b-button>
+      </div>
+    </div>
+
+    <div
+      style="background-color: #15151e"
+      class="d-flex justify-content-center"
+    >
+      <div class="container-fluid d-flex" style="height: 45vh">
+        <VueSlickCarousel class="banner" v-bind="setting" ref="carousel">
+          <div
+            v-bind:style="{ 'background-image': 'url(' + banner.img + ')' }"
+            class="banner bg-primary text-white col-8 d-flex align-items-end"
+            v-for="banner in Banners"
+            :key="banner.name"
+            
+          >
+            <div class="container-fluid">
+              <div>
+                <div class="row">
+                  <div class="interactive-poster-gradient p-1">
+                    <div class="row d-flex justify-content-center">
+                      <div class="col-6 p-1 mt-3 text-white">
+                        <div class="row align-items-center">
+                          <div class="col-2">
+                            <b-button class="button-play" :to="banner.linkTo" ><b-icon-play class="mt-4" scale="3"></b-icon-play> </b-button>
+                          </div>
+
+                          <div class="col-10">
+                            <h2 class="f1-font mt-5 ">{{ banner.name }}</h2>
+                            <div>
+                              <div class="list-inline">
+                                <p class="list-inline-item video-tag"><b-icon-clock class="me-2"></b-icon-clock>{{banner.videoDuration}}</p>
+                                <p class="list-inline-item video-tag">| ESPECIAL</p>
+                                <p class="list-inline-item video-tag">| FÓRMULA 1</p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </VueSlickCarousel>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+import VueSlickCarousel from "vue-slick-carousel";
+import "vue-slick-carousel/dist/vue-slick-carousel.css";
+
+import "vue-slick-carousel/dist/vue-slick-carousel-theme.css";
+
+export default {
+  name: "Home",
+
+  components: {
+    VueSlickCarousel,
+  },
+
+  data: function () {
+    return {
+      setting: {
+        centerMode: true,
+        slidesToShow: 1,
+        speed: 500,
+        arrows: false,
+        rows: 1,
+      },
+
+      Banners: [
+        {
+          name: "Formula 1 Sprint Race - São Paulo",
+          img: "https://f1tv.formula1.com/image-resizer/image/1000004831-283d7c1e-a0a8-4d06-8d7f-21d9962c410d?w=1328&h=569&q=HI&o=L",
+          linkTo:'/video1',
+          videoDuration: '00:23:10'
+        },
+        {
+          name: "Haas Ganha novo patrocinador",
+          img: "https://f1tv.formula1.com/image-resizer/image/1000004833-56c856fa-7407-43b9-93da-7949172a6737?w=1328&h=569&q=HI&o=L",
+          linkTo:'/video2',
+          videoDuration: '00:32:05'
+        },
+        {
+          name: "Aquecimento para o fim de semana",
+          img: "https://f1tv.formula1.com/image-resizer/image/1000004944-ab2d95ad-a558-4893-aad9-609d080ef16f?w=1328&h=569&q=HI&o=L",
+          linkTo:'/video2',
+          videoDuration: '00:10:54',
+
+        },
+        {
+          name: "F1 Team Profile - Aston Martin ",
+          img: "https://f1tv.formula1.com/image-resizer/image/1000004830-1edcf275-4406-4888-b20a-639992bae5bc?w=1328&h=569&q=HI&o=L",
+          linkTo:'/video2',
+          videoDuration: '00:08:20',
+        },
+      ],
+    };
+  },
+
+  methods: {
+    showNext() {
+      this.$refs.carousel.next();
+    },
+
+    showPrev() {
+      this.$refs.carousel.prev();
+    },
+  },
+};
+</script>
+
+<style scoped>
+.bg-slide {
+  background-image: url("https://cdn.wallpapersafari.com/8/77/LH7RTv.jpg");
+
+  background-size: cover;
+}
+
+
+.banner {
+  height: 60vh;
+  width: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin: 0px;
+  padding: 0px;
+}
+
+.buttons-slide {
+  position: absolute;
+  top: 35vh;
+  z-index: 1;
+  width: 100%;
+}
+
+.interactive-poster-gradient {
+  background-image: linear-gradient(
+    to bottom,
+    rgba(21, 21, 30, 0),
+    #15151e 85%
+  );
+
+  color: transparent;
+}
+
+.button-play {
+  background-color: red;
+  opacity: 0.6;
+  border-radius: 0px 40px 0px 0px;
+  height: 84px;
+  width: 84px;
+  border-style: none;
+}
+
+.button-play:hover {
+  background-color: red;
+  opacity: 1;
+}
+</style>
