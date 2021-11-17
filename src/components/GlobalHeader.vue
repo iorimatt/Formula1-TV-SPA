@@ -1,6 +1,6 @@
 <template>
   <div>
-    <b-navbar variant="light">
+    <b-navbar variant="light" >
       <div class="col- d-flex justify-content-end">
         <b-navbar-nav class="ms-5">
           <b-nav-item
@@ -241,4 +241,8 @@ li {
   font-size: 12px;
   text-align: start;
 }
+
+
+
+
 </style>

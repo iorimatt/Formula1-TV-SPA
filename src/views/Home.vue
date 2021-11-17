@@ -1,61 +1,68 @@
 <template>
-
-<div>
-
-
-
-  <b-container fluid class="p-0">
-
+  <div>
+    <b-container fluid class="p-0">
       <div class="row buttons-slide d-flex">
-      <div class="col-6">
-        <b-button variant="transparent" @click="showPrev()">
-          <b-icon-chevron-left
-            variant="white"
-            style="width: 60px; height: 60px"
-          ></b-icon-chevron-left>
-        </b-button>
+        <div class="col-6">
+          <b-button variant="transparent" @click="showPrev()">
+            <b-icon-chevron-left
+              variant="white"
+              style="width: 60px; height: 60px"
+            ></b-icon-chevron-left>
+          </b-button>
+        </div>
+        <div class="col-6 d-flex justify-content-end">
+          <b-button variant="transparent" @click="showNext()">
+            <b-icon-chevron-right
+              variant="white"
+              style="width: 60px; height: 60px"
+            ></b-icon-chevron-right>
+          </b-button>
+        </div>
       </div>
-      <div class="col-6 d-flex justify-content-end">
-        <b-button variant="transparent" @click="showNext()">
-          <b-icon-chevron-right
-            variant="white"
-            style="width: 60px; height: 60px"
-          ></b-icon-chevron-right>
-        </b-button>
-      </div>
-    </div>
 
-    <div
-      style="background-color: #15151e"
-      class="d-flex justify-content-center"
-    >
-      <div class="container-fluid d-flex" style="height: 45vh">
-        <VueSlickCarousel class="banner" v-bind="setting" ref="carousel">
-          <div
-            v-bind:style="{ 'background-image': 'url(' + banner.img + ')' }"
-            class="banner bg-primary text-white col-8 d-flex align-items-end"
-            v-for="banner in Banners"
-            :key="banner.name"
-            
-          >
-            <div class="container-fluid">
-              <div>
-                <div class="row">
-                  <div class="interactive-poster-gradient p-1">
-                    <div class="row d-flex justify-content-center">
-                      <div class="col-6 p-1 mt-3 text-white">
-                        <div class="row align-items-center">
-                          <div class="col-2">
-                            <b-button class="button-play" :to="banner.linkTo" ><b-icon-play class="mt-4" scale="3"></b-icon-play> </b-button>
-                          </div>
+      <div
+        style="background-color: #15151e"
+        class="d-flex justify-content-center"
+      >
+        <div class="container-fluid d-flex" style="height: 45vh">
+          <VueSlickCarousel class="banner" v-bind="setting" ref="carousel">
+            <div
+              v-bind:style="{ 'background-image': 'url(' + banner.img + ')' }"
+              class="banner bg-primary text-white col-8 d-flex align-items-end"
+              v-for="banner in Banners"
+              :key="banner.name"
+            >
+              <div class="container-fluid">
+                <div>
+                  <div class="row">
+                    <div class="interactive-poster-gradient p-1">
+                      <div class="row d-flex justify-content-center">
+                        <div class="col-6 p-1 mt-3 text-white">
+                          <div class="row align-items-center">
+                            <div class="col-2">
+                              <b-button class="button-play" :to="banner.linkTo"
+                                ><b-icon-play
+                                  class="mt-4"
+                                  scale="3"
+                                ></b-icon-play>
+                              </b-button>
+                            </div>
 
-                          <div class="col-10">
-                            <h2 class="f1-font mt-5 ">{{ banner.name }}</h2>
-                            <div>
-                              <div class="list-inline">
-                                <p class="list-inline-item video-tag"><b-icon-clock class="me-2"></b-icon-clock>{{banner.videoDuration}}</p>
-                                <p class="list-inline-item video-tag">| ESPECIAL</p>
-                                <p class="list-inline-item video-tag">| FÓRMULA 1</p>
+                            <div class="col-10">
+                              <h2 class="f1-font mt-5">{{ banner.name }}</h2>
+                              <div>
+                                <div class="list-inline">
+                                  <p class="list-inline-item video-tag">
+                                    <b-icon-clock class="me-2"></b-icon-clock
+                                    >{{ banner.videoDuration }}
+                                  </p>
+                                  <p class="list-inline-item video-tag">
+                                    | ESPECIAL
+                                  </p>
+                                  <p class="list-inline-item video-tag">
+                                    | FÓRMULA 1
+                                  </p>
+                                </div>
                               </div>
                             </div>
                           </div>
@@ -66,47 +73,34 @@
                 </div>
               </div>
             </div>
-          </div>
-        </VueSlickCarousel>
-
-
-        
+          </VueSlickCarousel>
+        </div>
       </div>
-      
+    </b-container>
 
-    </div>
-
-    
-
- </b-container>
-
-
-  <b-container class="promo-content d-flex justify-content-center">
-
-    <b-row>
-
-        <h3 class="d-flex justify-content-center f1-font text-white">Assine a F1TV</h3>
-
-        <b-row class="d-flex justify-content-center">
+    <b-container class="promo-content d-flex justify-content-center">
+      <b-row class="d-flex justify-content-center">
+        <h3 class="d-flex justify-content-center f1-font text-white">
+          Assine a F1TV
+        </h3>
 
         <b-button class="col-4 m-3" variant="danger"> SE INSCREVA</b-button>
-        </b-row>
+        <h3 class="d-flex justify-content-center text-white">
+          TODA A F1 AO VIVO
+        </h3>
+      </b-row>
+    </b-container>
 
-
-        <h3 class="d-flex justify-content-center text-white">TODA A F1 AO VIVO</h3>
-
-
-    </b-row>
-
-
-
-  </b-container>
-
-
-
-
+    <b-container>
+      <b-row class="container promo-carousel">
+        <VueSlickCarousel v-bind="settings" class="mt-5 mb-5">
+          <div class="bg-primary p-5">1</div>
+          <div class="bg-danger p-5">2</div>
+          <div class="bg-dark p-5">3</div>
+        </VueSlickCarousel>
+      </b-row>
+    </b-container>
   </div>
-  
 </template>
 
 <script>
@@ -136,27 +130,26 @@ export default {
         {
           name: "Formula 1 Sprint Race - São Paulo",
           img: "https://f1tv.formula1.com/image-resizer/image/1000004831-283d7c1e-a0a8-4d06-8d7f-21d9962c410d?w=1328&h=569&q=HI&o=L",
-          linkTo:'/video1',
-          videoDuration: '00:23:10'
+          linkTo: "/video1",
+          videoDuration: "00:23:10",
         },
         {
           name: "Haas Ganha novo patrocinador",
           img: "https://f1tv.formula1.com/image-resizer/image/1000004833-56c856fa-7407-43b9-93da-7949172a6737?w=1328&h=569&q=HI&o=L",
-          linkTo:'/video2',
-          videoDuration: '00:32:05'
+          linkTo: "/video2",
+          videoDuration: "00:32:05",
         },
         {
           name: "Aquecimento para o fim de semana",
           img: "https://f1tv.formula1.com/image-resizer/image/1000004944-ab2d95ad-a558-4893-aad9-609d080ef16f?w=1328&h=569&q=HI&o=L",
-          linkTo:'/video2',
-          videoDuration: '00:10:54',
-
+          linkTo: "/video2",
+          videoDuration: "00:10:54",
         },
         {
           name: "F1 Team Profile - Aston Martin ",
           img: "https://f1tv.formula1.com/image-resizer/image/1000004830-1edcf275-4406-4888-b20a-639992bae5bc?w=1328&h=569&q=HI&o=L",
-          linkTo:'/video2',
-          videoDuration: '00:08:20',
+          linkTo: "/video2",
+          videoDuration: "00:08:20",
         },
       ],
     };
@@ -180,7 +173,6 @@ export default {
 
   background-size: cover;
 }
-
 
 .banner {
   height: 60vh;
@@ -223,12 +215,7 @@ export default {
   opacity: 1;
 }
 
-
 .promo-content {
-
-
-margin-top: 13%;
-
-
+  margin-top: 10%;
 }
 </style>
