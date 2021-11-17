@@ -1,6 +1,12 @@
 <template>
-  <div>
-    <div class="row buttons-slide d-flex">
+
+<div>
+
+
+
+  <b-container fluid class="p-0">
+
+      <div class="row buttons-slide d-flex">
       <div class="col-6">
         <b-button variant="transparent" @click="showPrev()">
           <b-icon-chevron-left
@@ -62,9 +68,45 @@
             </div>
           </div>
         </VueSlickCarousel>
+
+
+        
       </div>
+      
+
     </div>
+
+    
+
+ </b-container>
+
+
+  <b-container class="promo-content d-flex justify-content-center">
+
+    <b-row>
+
+        <h3 class="d-flex justify-content-center f1-font text-white">Assine a F1TV</h3>
+
+        <b-row class="d-flex justify-content-center">
+
+        <b-button class="col-4 m-3" variant="danger"> SE INSCREVA</b-button>
+        </b-row>
+
+
+        <h3 class="d-flex justify-content-center text-white">TODA A F1 AO VIVO</h3>
+
+
+    </b-row>
+
+
+
+  </b-container>
+
+
+
+
   </div>
+  
 </template>
 
 <script>
@@ -179,5 +221,14 @@ export default {
 .button-play:hover {
   background-color: red;
   opacity: 1;
+}
+
+
+.promo-content {
+
+
+margin-top: 13%;
+
+
 }
 </style>
