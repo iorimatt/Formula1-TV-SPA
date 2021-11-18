@@ -92,12 +92,43 @@
     </b-container>
 
     <b-container>
-      <b-row class="container promo-carousel">
-        <VueSlickCarousel v-bind="settings" class="mt-5 mb-5">
-          <div class="bg-primary p-5">1</div>
-          <div class="bg-danger p-5">2</div>
-          <div class="bg-dark p-5">3</div>
+      <b-row
+        class="container promo-carousel d-flex justify-content-center"
+        style="height: 45vh"
+      >
+        <VueSlickCarousel v-bind="settings" class="mt-5 mb-5 col-6">
+          <div
+            v-for="promo in PromoBanners"
+            :key="promo.name"
+            v-bind:style="{
+              'background-image': 'url(' + promo.img + ')',
+            }"
+            class="promo-banners row"
+          ></div>
         </VueSlickCarousel>
+      </b-row>
+    </b-container>
+
+    <b-container class="mt-5 mb-5">
+      <b-row>
+        <b-col v-for="content in Contents" :key="content.name">
+          <b-card
+            :title="content.name"
+            :img-src="content.img"
+            :header="content.tag + '    ' + '| ESPECIAL'"
+            bg-variant="dark"
+            class="text-white"
+          >
+         
+
+              <b-button class="button-play card-play" ><b-icon-play scale="3" ></b-icon-play></b-button>
+
+          
+          
+          
+          
+          </b-card>
+        </b-col>
       </b-row>
     </b-container>
   </div>
@@ -118,6 +149,24 @@ export default {
 
   data: function () {
     return {
+      Contents: [
+        {
+          name: "WEEKEND DEBRIEF - SÃO PAULO",
+          tag: "00:26:01",
+          img: "https://f1tv.formula1.com/image-resizer/image/1000004973-22faa856-391b-43ea-b4d6-436e5f53e12d?w=354&h=199&q=HI&o=L",
+        },
+        {
+          name: "ANÁLISE DE JOLYON PALMER - SÃO PAULO",
+          tag: "00:16:01",
+          img: "https://f1tv.formula1.com/image-resizer/image/1000004972-60dd10a6-360e-4c3a-a585-e3ec8367c4a4?w=354&h=199&q=HI&o=L",
+        },
+        {
+          name: "TOP 10 ONBOARDS - SÃO PAULO",
+          tag: "00:43:01",
+          img: "https://f1tv.formula1.com/image-resizer/image/1000004963-30580560-896f-4add-80fc-1723848d3fb3?w=354&h=199&q=HI&o=L",
+        },
+      ],
+
       setting: {
         centerMode: true,
         slidesToShow: 1,
@@ -150,6 +199,18 @@ export default {
           img: "https://f1tv.formula1.com/image-resizer/image/1000004830-1edcf275-4406-4888-b20a-639992bae5bc?w=1328&h=569&q=HI&o=L",
           linkTo: "/video2",
           videoDuration: "00:08:20",
+        },
+      ],
+
+      PromoBanners: [
+        {
+          img: "https://ott-img.formula1.com/subscription/ProImagesNoBG/live-nocut.png?w=690&h=388&q=HI&o=L",
+        },
+        {
+          img: "https://ott-img.formula1.com/subscription/ProImagesNoBG/your-way.png?w=690&h=388&q=HI&o=L",
+        },
+        {
+          img: "https://ott-img.formula1.com/subscription/ProImagesNoBG/shows.png?w=690&h=388&q=HI&o=L",
         },
       ],
     };
@@ -217,5 +278,40 @@ export default {
 
 .promo-content {
   margin-top: 10%;
+}
+
+.promo-banners {
+  background-size: contain;
+  height: 40vh;
+  background-repeat: no-repeat;
+}
+
+.card {
+
+
+border-radius: 15px;
+
+}
+
+
+.card-title {
+  font-size: 16px;
+}
+
+.card-header {
+  font-size: 14px;
+  color: grey;
+}
+
+.card-play {
+
+
+position: relative;
+    bottom: 16vh;
+    right: 1.5vh;
+    border-radius: 0px 20px 0px 0px;
+    height: 70px;
+    width: 70px;
+
 }
 </style>
