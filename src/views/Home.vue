@@ -1,6 +1,7 @@
 <template>
   <div>
-    <b-container fluid class="p-0">
+    <!----main banner--->
+    <b-container fluid class="p-0" >
       <div class="row buttons-slide d-flex">
         <div class="col-6">
           <b-button variant="transparent" @click="showPrev()">
@@ -78,6 +79,8 @@
       </div>
     </b-container>
 
+    <!----promo banner--->
+
     <b-container class="promo-content d-flex justify-content-center">
       <b-row class="d-flex justify-content-center">
         <h3 class="d-flex justify-content-center f1-font text-white">
@@ -109,29 +112,55 @@
       </b-row>
     </b-container>
 
+    <!----three cards content--->
     <b-container class="mt-5 mb-5">
       <b-row>
         <b-col v-for="content in Contents" :key="content.name">
-          <b-card
-            :title="content.name"
-            :img-src="content.img"
-            :header="content.tag + '    ' + '| ESPECIAL'"
-            bg-variant="dark"
-            class="text-white"
-          >
-         
+          <b-card bg-variant="dark" class="text-white p-0">
+            <div class="row d-flex align-items-end">
+              <b-card-img class="p-0 m-0" :src="content.img"> </b-card-img>
 
-              <b-button class="button-play card-play" ><b-icon-play scale="3" ></b-icon-play></b-button>
+              <b-button :to="content.link" class="button-play position-absolute"
+                ><b-icon-play scale="3" class="mt-4"></b-icon-play
+              ></b-button>
+            </div>
 
-          
-          
-          
-          
+            <div class="row">
+              <b-card-header>{{ content.tag }}</b-card-header>
+              <b-card-title>{{ content.name }}</b-card-title>
+            </div>
+          </b-card>
+        </b-col>
+      </b-row>
+    </b-container>
+
+    <!--four cards content--->
+
+    <b-container class="mt-5 mb-5">
+
+
+      <h3 class="text-white f1-font mt-5 mb-3">AS MELHORES CORRIDAS</h3>
+      <b-row>
+        <b-col v-for="banner in Banners" :key="banner.name">
+          <b-card bg-variant="dark" class="text-white p-0">
+            <div class="row d-flex align-items-end">
+              <b-card-img class="p-0 m-0" :src="banner.img"> </b-card-img>
+
+              <b-button :to="banner.linkTo" class="button-play position-absolute"
+                ><b-icon-play scale="3" class="mt-4"></b-icon-play
+              ></b-button>
+            </div>
+
+            <div class="row">
+              <b-card-header>{{ banner.videoDuration }}</b-card-header>
+              <b-card-title>{{ banner.name }}</b-card-title>
+            </div>
           </b-card>
         </b-col>
       </b-row>
     </b-container>
   </div>
+  
 </template>
 
 <script>
@@ -153,16 +182,19 @@ export default {
         {
           name: "WEEKEND DEBRIEF - SÃO PAULO",
           tag: "00:26:01",
+          link: "content1",
           img: "https://f1tv.formula1.com/image-resizer/image/1000004973-22faa856-391b-43ea-b4d6-436e5f53e12d?w=354&h=199&q=HI&o=L",
         },
         {
           name: "ANÁLISE DE JOLYON PALMER - SÃO PAULO",
           tag: "00:16:01",
+          link: "content2",
           img: "https://f1tv.formula1.com/image-resizer/image/1000004972-60dd10a6-360e-4c3a-a585-e3ec8367c4a4?w=354&h=199&q=HI&o=L",
         },
         {
           name: "TOP 10 ONBOARDS - SÃO PAULO",
           tag: "00:43:01",
+          link: "content3",
           img: "https://f1tv.formula1.com/image-resizer/image/1000004963-30580560-896f-4add-80fc-1723848d3fb3?w=354&h=199&q=HI&o=L",
         },
       ],
@@ -287,15 +319,17 @@ export default {
 }
 
 .card {
-
-
-border-radius: 15px;
-
+  border-radius: 15px;
+  
 }
 
+.card-body {
+  padding: 0px 12px;
+}
 
 .card-title {
   font-size: 16px;
+  margin-bottom: 8vh;
 }
 
 .card-header {
@@ -304,14 +338,11 @@ border-radius: 15px;
 }
 
 .card-play {
-
-
-position: relative;
-    bottom: 16vh;
-    right: 1.5vh;
-    border-radius: 0px 20px 0px 0px;
-    height: 70px;
-    width: 70px;
-
+  position: relative;
+  bottom: 16vh;
+  right: 1.5vh;
+  border-radius: 0px 20px 0px 0px;
+  height: 70px;
+  width: 70px;
 }
 </style>

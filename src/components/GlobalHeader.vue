@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div  style="z-index:4">
     <b-navbar variant="light" >
       <div class="col- d-flex justify-content-end">
         <b-navbar-nav class="ms-5">

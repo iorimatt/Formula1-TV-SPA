@@ -1,6 +1,8 @@
 <template>
   <div>
         <global-header></global-header>
+       
+       
        <router-view/>
   </div>
 </template>
