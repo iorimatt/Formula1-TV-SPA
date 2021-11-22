@@ -4,6 +4,13 @@
   format: ("ttf");
 }
 
+@font-face {
+  font-family: "TitiliumWeb-regular";
+  src: local("TitiliumWeb-regular"), url("../fonts/TitilliumWeb-Regular.ttf");
+  format: ("ttf");
+}
+
+
 
 @font-face {
   font-family: "Formula1";
@@ -34,5 +41,12 @@ font-family: 'Formula1-regular';
 
 }
 
+
+.titillium-regular {
+
+  font-family: "TitiliumWeb-regular"
+  
+
+}
 
 

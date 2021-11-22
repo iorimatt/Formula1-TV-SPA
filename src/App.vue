@@ -2,8 +2,9 @@
   <div>
         <global-header></global-header>
        
-       
-       <router-view/>
+         <router-view/>
+
+         <footer><global-footer></global-footer></footer>
   </div>
 </template>
 
@@ -11,12 +12,14 @@
 
 
 import GlobalHeader from './components/GlobalHeader.vue'
+import GlobalFooter from './components/GlobalFooter.vue'
 
 
 
 export default {
   components: {
     GlobalHeader,
+    GlobalFooter,
     
     
   }
