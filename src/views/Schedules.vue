@@ -16,7 +16,8 @@
     </b-container>
 
     <b-container style="padding: 0vh 20vh">
-      <b-row v-for="race in racesUpcoming" :key="race" class="d-flex mt-5">
+  <div class="text-center"><b-spinner variant="danger" style="width:10vh; height:10vh;" v-if="loader" class="m-5" ></b-spinner></div>
+    <b-row v-for="race in racesUpcoming" :key="race" class="d-flex mt-5">
         <h2 class="f1-font text-white">{{ race.raceName }}</h2>
         <p class="f1-font-regular text-white">
           Data da Corrida | {{ race.date.split("-").reverse().join("/") }}
@@ -50,6 +51,7 @@
           </div>
         </b-row>
       </b-row>
+     
     </b-container>
   </div>
 </template>
@@ -60,6 +62,7 @@ import axios from "axios";
 export default {
   data: function () {
     return {
+      loader: true,
       raceList: [],
       roundsRemaining: 3,
       racesUpcoming: [],
@@ -74,6 +77,7 @@ export default {
         .then((res) => {
           this.raceList = res.data.MRData.RaceTable.Races;
           this.racesUpcoming = this.raceList.slice("-" + this.roundsRemaining);
+          this.loader = false;
         })
         .catch((error) => {
           this, (this.raceName = error);
