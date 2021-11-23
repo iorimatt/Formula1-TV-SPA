@@ -85,7 +85,7 @@
 
     <b-container>
       <b-row class="mt-3">
-        <b-col class="text-white">PORTUGUÊS</b-col>
+        <b-col class="text-white">{{this.$store.state.title}}</b-col>
         <b-col
           ><p class="copywritten text-end ">
             © 2003 - 2021 Formula One World Championship Limited
@@ -97,43 +97,17 @@
 </template>
 
 <script>
+
+
+
 export default {
   name: "GlobalFooter",
 
   data: function () {
     return {
-      generalLinks: [
-        {
-          name: "Termos e condições",
-          link: "https://account.formula1.com/#/pt/subscription-terms",
-        },
-        {
-          name: "Política de cookies",
-          link: "https://account.formula1.com/#/pt/subscription-terms",
-        },
-        {
-          name: "Preferências de cookie",
-          link: "https://account.formula1.com/#/pt/subscription-terms",
-        },
-        {
-          name: "Política de privacidade",
-          link: "https://account.formula1.com/#/pt/subscription-terms",
-        },
-        {
-          name: "Perguntas frequentes",
-          link: "https://account.formula1.com/#/pt/subscription-terms",
-        },
-        {
-          name: "Contato",
-          link: "https://account.formula1.com/#/pt/subscription-terms",
-        },
-      ],
+      generalLinks: this.$store.state.generalLinks,
 
-      socialLinks: [
-        { name: "Facebook", link: "" },
-        { name: "Twitter", link: "" },
-        { name: "Instagram", link: "" },
-      ],
+      socialLinks: this.$store.state.socialLinks,
     };
   },
 };
