@@ -1,6 +1,6 @@
 <template>
-  <div  style="z-index:4">
-    <b-navbar variant="light" >
+  <div style="z-index: 4">
+    <b-navbar variant="light">
       <div class="col- d-flex justify-content-end">
         <b-navbar-nav class="ms-5">
           <b-nav-item
@@ -50,7 +50,9 @@
 
         <b-modal v-if="IsLogged" id="modalUser">
           <div class="d-flex justify-content-center">
-            <div><h4 class="mb-3">{{UserProfile}}</h4></div>
+            <div>
+              <h4 class="mb-3">{{ UserProfile }}</h4>
+            </div>
           </div>
 
           <div class="d-flex justify-content-center">
@@ -91,48 +93,17 @@
 export default {
   name: "GlobalHeader",
 
-
-data: function () {
+  data: function () {
     return {
-      IsLogged: false,
-      UserProfile: "Mateus Franco",
+      IsLogged: this.$store.state.IsLogged,
+      UserProfile: this.$store.state.UserProfile,
       F1Logo: "https://upload.wikimedia.org/wikipedia/commons/3/33/F1.svg",
-      Options: [
-        {
-          name: "AUTHENTIC",
-          link: "a",
-        },
-        {
-          name: "STORE",
-          link: "b",
-        },
-        {
-          name: "TICKETS",
-          link: "c",
-        },
-        {
-          name: "HOSPITALITY",
-          link: "d",
-        },
-        {
-          name: "EXPERIENCES",
-          link: "e",
-        },
-      ],
 
-      SubOptions: [
-        { name: "2021 temporada", link: "/2021-season" },
-        { name: "Horários", link: "/schedules" },
-        { name: "Arquivo", link: "/archives" },
-        { name: "Programas", link: "/shows" },
-        { name: "Documentários", link: "/documentaries" },
-      ],
+      Options: this.$store.state.optionsMenu,
 
-      Categories: [
-        { name: "F1™", link: "f1" },
-        { name: "F2™", link: "f2" },
-        { name: "F3™", link: "f3" },
-      ],
+      SubOptions: this.$store.state.SubOptionsMenu,
+
+      Categories: this.$store.categoriesMenu,
     };
   },
 
@@ -141,8 +112,7 @@ data: function () {
       return !this.IsLogged;
     },
   },
-
-  };
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
@@ -241,8 +211,4 @@ li {
   font-size: 12px;
   text-align: start;
 }
-
-
-
-
 </style>

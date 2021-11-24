@@ -105,9 +105,8 @@ export default {
 
   data: function () {
     return {
-      generalLinks: this.$store.state.generalLinks,
-
-      socialLinks: this.$store.state.socialLinks,
+      generalLinks: this.$store.state.generalLinksFooter,
+      socialLinks: this.$store.state.socialLinksFooter,
     };
   },
 };
