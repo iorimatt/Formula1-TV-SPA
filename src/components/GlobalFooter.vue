@@ -42,7 +42,7 @@
           </b-row>
 
           <b-row>
-            <b-col><p>Disponível em</p></b-col>
+            <b-col><p class="text-white mt-3 mb-3" >Disponível em</p></b-col>
           </b-row>
 
           <b-row>

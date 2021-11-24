@@ -3,14 +3,6 @@ import Vuex from 'vuex'
 import axios from 'axios'
 import router from './router/index'
 
-
-
-
-
-
-
-
-
 Vue.use(Vuex)
 
 const store = new Vuex.Store({
@@ -187,9 +179,6 @@ const store = new Vuex.Store({
     }
 
 
-
-
-
   },
 
   actions: {
@@ -215,19 +204,7 @@ const store = new Vuex.Store({
     }
 
 
-
-
-
-
-
-
-
   },
-
-
-
-
-
 
 
 },

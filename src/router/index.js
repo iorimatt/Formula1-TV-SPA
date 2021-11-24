@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import Schedules from '../views/Schedules.vue'
 import Report from '../views/ReportPage.vue'
+import Login from '../views/Login.vue'
 
 Vue.use(VueRouter)
 
@@ -52,7 +53,8 @@ const routes = [
   {
 
     path: '/login',
-    name: 'login',
+    name: 'Login',
+    component: Login
 
 
   }, 
