@@ -16,15 +16,22 @@
     </b-container>
 
     <b-container style="padding: 0vh 20vh">
-  <div class="text-center"><b-spinner variant="danger" style="width:10vh; height:10vh;" v-if="loader" class="m-5" ></b-spinner></div>
-    <b-row v-for="race in racesUpcoming" :key="race" class="d-flex mt-5">
+      <div class="text-center">
+        <b-spinner
+          variant="danger"
+          style="width: 10vh; height: 10vh"
+          v-if="loadStatus()"
+          class="m-5"
+        ></b-spinner>
+        
+      </div>
+      <b-row v-for="race in raceUpcoming" :key="race" class="d-flex mt-5">
         <h2 class="f1-font text-white">{{ race.raceName }}</h2>
         <p class="f1-font-regular text-white">
           Data da Corrida | {{ race.date.split("-").reverse().join("/") }}
         </p>
 
         <b-row class="d-flex mt-5">
-          
           <div>
             <h5 class="f1-font text-white">Agenda da Semana</h5>
             <b-tabs content-class="mt-3" align="end">
@@ -36,7 +43,7 @@
                         ><h5>GRANDE PRÊMIO</h5></b-col
                       >
                       <b-col cols="6" class="d-flex justify-content-center"
-                        ><h5>{{race.time}}</h5></b-col
+                        ><h5>{{ race.time }}</h5></b-col
                       >
                     </b-row>
                   </div>
@@ -51,45 +58,48 @@
           </div>
         </b-row>
       </b-row>
-     
     </b-container>
+    
   </div>
 </template>
 
 <script>
-import axios from "axios";
+//import axios from "axios";
 
 export default {
   data: function () {
     return {
-      loader: true,
-      raceList: [],
-      roundsRemaining: 3,
-      racesUpcoming: [],
-      
+       roundsRemaining: 2,
+       error: this.$store.state.error
     };
   },
 
-  methods: {
-    getRaceList() {
-      axios
-        .get("http://ergast.com/api/f1/current.json")
-        .then((res) => {
-          this.raceList = res.data.MRData.RaceTable.Races;
-          this.racesUpcoming = this.raceList.slice("-" + this.roundsRemaining);
-          this.loader = false;
-        })
-        .catch((error) => {
-          this, (this.raceName = error);
-        });
+  computed: {
+    raceList() {
+      return this.$store.state.raceList;
     },
 
-
-    
+    raceUpcoming() {
+      return this.raceList.slice("-" + this.roundsRemaining);
+    },
   },
+
+  methods: {
+    loadStatus() {
+
+        if (this.raceUpcoming.length > 0) {
+
+          return false;
+
+       }
+
+       return true;
+
+       },},
+
   mounted() {
-    this.getRaceList();
-    this.raceHour();
+    this.$store.dispatch("getRaceList");
+    this.loadStatus();
   },
 };
 </script>

@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import Schedules from '../views/Schedules.vue'
+import Report from '../views/ReportPage.vue'
 
 Vue.use(VueRouter)
 
@@ -46,6 +47,23 @@ const routes = [
     path: '/documentaries',
     name: 'Documentários',
 
+  },
+
+  {
+
+    path: '/login',
+    name: 'login',
+
+
+  }, 
+
+  {
+    path: '/error',
+    name: 'Report',
+    component: Report
+
+         
+    
   }
   
 ]

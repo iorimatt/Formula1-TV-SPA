@@ -1,5 +1,15 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import axios from 'axios'
+import router from './router/index'
+
+
+
+
+
+
+
+
 
 Vue.use(Vuex)
 
@@ -73,7 +83,7 @@ const store = new Vuex.Store({
         link: "e",
       },
     ],
-    categoriesMenu:  [
+    categoriesMenu: [
       { name: "F1™", link: "f1" },
       { name: "F2™", link: "f2" },
       { name: "F3™", link: "f3" },
@@ -108,7 +118,7 @@ const store = new Vuex.Store({
       },
     ],
 
-    homePromoBanners:  [
+    homePromoBanners: [
       {
         img: "https://ott-img.formula1.com/subscription/ProImagesNoBG/live-nocut.png?w=690&h=388&q=HI&o=L",
       },
@@ -139,12 +149,90 @@ const store = new Vuex.Store({
         link: "content3",
         img: "https://f1tv.formula1.com/image-resizer/image/1000004963-30580560-896f-4add-80fc-1723848d3fb3?w=354&h=199&q=HI&o=L",
       },
-    ], 
-    
-
-  }
+    ],
 
 
-})
+    //Data For Schedules
+
+    raceList: [],
+    raceName: '',
+
+
+    //Data for Errors
+
+    error: '',
+
+
+
+  },
+
+  mutations: {
+
+    SET_RACELIST(state, race) {
+
+      state.raceList = race
+      console.log(state.raceList)
+
+
+    },
+
+
+
+    SET_ERROR(state, error) {
+
+
+      state.error = error
+
+
+    }
+
+
+
+
+
+  },
+
+  actions: {
+
+    getRaceList({ commit }) {
+
+      axios
+        .get("http://ergast.com/api/f1/current.json")
+        .then((res) => {
+          commit('SET_RACELIST', res.data.MRData.RaceTable.Races)
+
+
+        }).catch((res) => {
+
+
+          let error = res.toString()
+
+          commit('SET_ERROR', error)
+          router.push('/error')
+
+        })
+
+    }
+
+
+
+
+
+
+
+
+
+  },
+
+
+
+
+
+
+
+},
+
+
+)
 
 export { store }

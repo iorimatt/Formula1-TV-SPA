@@ -42,7 +42,7 @@
           >{{ UserProfile }}</b-button
         >
 
-        <b-button v-if="SignUp" variant="dark" class="me-3 pe-3"
+        <b-button v-if="SignUp" to="/login" variant="dark" class="me-3 pe-3"
           ><b-icon-person></b-icon-person>ENTRAR</b-button
         >
 
