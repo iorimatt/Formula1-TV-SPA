@@ -206,6 +206,10 @@ export default {
 </script>
 
 <style scoped>
+
+
+
+
 .bg-slide {
   background-image: url("https://cdn.wallpapersafari.com/8/77/LH7RTv.jpg");
 
@@ -263,30 +267,6 @@ export default {
   background-repeat: no-repeat;
 }
 
-.card {
-  border-radius: 15px;
-}
 
-.card-body {
-  padding: 0px 12px;
-}
 
-.card-title {
-  font-size: 16px;
-  margin-bottom: 8vh;
-}
-
-.card-header {
-  font-size: 14px;
-  color: grey;
-}
-
-.card-play {
-  position: relative;
-  bottom: 16vh;
-  right: 1.5vh;
-  border-radius: 0px 20px 0px 0px;
-  height: 70px;
-  width: 70px;
-}
 </style>

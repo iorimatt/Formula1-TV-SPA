@@ -90,13 +90,17 @@
 </template>
 
 <script>
+
+
+
 export default {
   name: "GlobalHeader",
 
   data: function () {
     return {
-      IsLogged: this.$store.state.IsLogged,
-      UserProfile: this.$store.state.UserProfile,
+
+      
+      UserProfile: this.$store.state.userProfile,
       F1Logo: "https://upload.wikimedia.org/wikipedia/commons/3/33/F1.svg",
 
       Options: this.$store.state.optionsMenu,
@@ -111,7 +115,11 @@ export default {
     SignUp: function () {
       return !this.IsLogged;
     },
-  },
+
+    IsLogged: function() {return this.$store.getters.auth}
+
+  
+   },
 };
 </script>
 

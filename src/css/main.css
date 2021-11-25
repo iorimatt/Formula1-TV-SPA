@@ -34,7 +34,7 @@ font-family: 'Formula1-regular';
 .video-tag {
 
 
-  color: #949498;
+  color: var(--secondary);
   font-size: 14px;
 
 
@@ -47,6 +47,34 @@ font-family: 'Formula1-regular';
   font-family: "TitiliumWeb-regular"
   
 
+}
+
+
+.card {
+  border-radius: 15px;
+}
+
+.card-body {
+  padding: 0px 12px;
+}
+
+.card-title {
+  font-size: 16px;
+  margin-bottom: 8vh;
+}
+
+.card-header {
+  font-size: 14px;
+  color: var(--secondary);
+}
+
+.card-play {
+  position: relative;
+  bottom: 16vh;
+  right: 1.5vh;
+  border-radius: 0px 20px 0px 0px;
+  height: 70px;
+  width: 70px;
 }
 
 

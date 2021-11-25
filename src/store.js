@@ -12,7 +12,7 @@ const store = new Vuex.Store({
 
     //User Login States 
 
-    userProfile: 'mateus franco',
+    userProfile: 'Mateus Franco',
     isLogged: false,
 
     //Data for GlobalFooter
@@ -158,12 +158,46 @@ const store = new Vuex.Store({
 
   },
 
+
+
+  getters: {
+
+    auth(state) {
+
+      return state.isLogged
+
+
+    }
+
+
+  },
+
+
+
+
+
   mutations: {
+
+
+
+    SET_AUTH(state, res) {
+
+
+      if (res === 200) {
+
+        state.isLogged = true
+        router.push('/')
+
+
+      }
+
+
+
+    },
 
     SET_RACELIST(state, race) {
 
       state.raceList = race
-      console.log(state.raceList)
 
 
     },
@@ -191,17 +225,43 @@ const store = new Vuex.Store({
           commit('SET_RACELIST', res.data.MRData.RaceTable.Races)
 
 
+
         }).catch((res) => {
 
 
           let error = res.toString()
-
           commit('SET_ERROR', error)
           router.push('/error')
 
         })
 
-    }
+    },
+
+    userAuth({ commit }) {
+
+      axios
+        .post('https://click-up-api.azurewebsites.net/api/login', {
+
+          email: 'natan.fonseca@bitzen.com.br',
+          password: 'Na@1201206'
+
+        }).then((res) => {
+
+          commit('SET_AUTH', res.status)
+
+
+        }).catch((res) => {
+
+          let error = res.toString()
+          commit('SET_ERROR', error)
+          router.push('/error')
+
+
+        })
+
+
+    },
+
 
 
   },

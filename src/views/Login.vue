@@ -13,7 +13,7 @@
           align-items-center
         "
       >
-        <b-col cols="4">
+        <b-col cols="4" class="mt-5 mb-5">
           <b-row class="color-black align-items-center">
             <h1 class="f1-font mb-5 title-row pb-4">ENTRAR</h1>
 
@@ -32,10 +32,13 @@
 
             <b-row>
              <b-col class="mt-4">
-                <b-button variant="danger">ENTRAR</b-button>
+                <b-overlay :show='show' spinner-variant="danger"
+               ><b-button v-show="btnShow" variant="danger" @click="sendPost()">ENTRAR</b-button></b-overlay>
+               
             </b-col>
              </b-row>
-
+          <h3 class="text-black">{{Logged}}</h3>
+    
           </b-row>
         </b-col>
       </b-row>
@@ -45,20 +48,51 @@
 
 <script>
 export default {
+
+
   name: "Login",
+
+
+  data: function () {
+    return {
+       show: false,
+       btnShow: true,
+            
+    };
+  },
+
+
+ methods: {
+
+   sendPost(){
+
+          
+        this.$store.dispatch("userAuth")
+        this.show = true
+        this.btnShow = false
+        
+
+      }
+
+
+ },
+
+
+
+
 };
 </script>
 
 <style>
 .box-login {
-  min-height: 60vh;
+  min-height: 20vh;
 }
 
 .title-row {
 
 
 border-style: solid;
-border-color:#d0d0d2;
+border-color: gray;
 border-width: 0px 0px 1px 0px;
 
 
