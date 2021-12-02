@@ -150,9 +150,20 @@ const store = new Vuex.Store({
     raceName: '',
 
 
+      //Login fields
+
+    userEmail: '',
+    userPassword: '', 
+
+
+
+
     //Data for Errors
 
     error: '',
+    haveError: false, 
+
+    
 
 
 
@@ -165,7 +176,6 @@ const store = new Vuex.Store({
     auth(state) {
 
       return state.isLogged
-
 
     }
 
@@ -180,18 +190,27 @@ const store = new Vuex.Store({
 
 
 
+  
+
+    SET_USERDATA(state, payload){
+
+        state.userEmail = payload.user
+        state.userPassword = payload.password
+       
+    }, 
+
+
     SET_AUTH(state, res) {
 
 
       if (res === 200) {
 
-        state.isLogged = true
+        state.isLogged = !state.isLogged
         router.push('/')
-
-
+              
       }
 
-
+      
 
     },
 
@@ -199,17 +218,15 @@ const store = new Vuex.Store({
 
       state.raceList = race
 
-
     },
 
 
 
     SET_ERROR(state, error) {
-
-
       state.error = error
-
-
+      state.haveError = true
+      
+      
     }
 
 
@@ -224,8 +241,6 @@ const store = new Vuex.Store({
         .then((res) => {
           commit('SET_RACELIST', res.data.MRData.RaceTable.Races)
 
-
-
         }).catch((res) => {
 
 
@@ -237,30 +252,47 @@ const store = new Vuex.Store({
 
     },
 
-    userAuth({ commit }) {
+     userAuth({ commit }) {
 
-      axios
-        .post('https://click-up-api.azurewebsites.net/api/login', {
 
-          email: 'natan.fonseca@bitzen.com.br',
-          password: 'Na@1201206'
+        
+       axios
+         .post('https://click-up-api.azurewebsites.net/api/login', {
+
+          email: this.state.userEmail,
+          password: this.state.userPassword,
+                 
 
         }).then((res) => {
 
-          commit('SET_AUTH', res.status)
+       
+         commit('SET_AUTH', res.status)
+        
+         
 
 
-        }).catch((res) => {
+         }).catch((res) => {
 
-          let error = res.toString()
-          commit('SET_ERROR', error)
-          router.push('/error')
+         let error = res
+           commit('SET_ERROR', error.response.data.errors)
+           //router.push('/error')
+           
+          
+          
 
 
-        })
+       })
 
 
-    },
+     },
+
+
+    logAuth({commit}){
+
+        commit('SET_AUTH', 200)
+        
+
+    }
 
 
 

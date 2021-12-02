@@ -48,7 +48,7 @@
 
         <b-button v-if="SignUp" variant="danger">SE INSCREVA</b-button>
 
-        <b-modal v-if="IsLogged" id="modalUser">
+        <b-modal hide-footer v-if="IsLogged" id="modalUser">
           <div class="d-flex justify-content-center">
             <div>
               <h4 class="mb-3">{{ UserProfile }}</h4>
@@ -56,8 +56,8 @@
           </div>
 
           <div class="d-flex justify-content-center">
-            <b-button class="col-6 modal-button" variant="danger"
-              >GERENCIAR CONTA</b-button
+            <b-button @click="logOut()" class="col-6 modal-button text-center" variant="danger"
+              >LOGOUT</b-button
             >
           </div>
         </b-modal>
@@ -116,7 +116,21 @@ export default {
       return !this.IsLogged;
     },
 
-    IsLogged: function() {return this.$store.getters.auth}
+
+    logOut: function (){
+
+        return this.$store.dispatch('logAuth')
+        
+    },
+
+    IsLogged: function() {
+      
+    return this.$store.getters.auth
+   
+
+    }
+
+   
 
   
    },
