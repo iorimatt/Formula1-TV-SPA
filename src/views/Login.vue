@@ -25,9 +25,11 @@
             <div class="mb-3 mt-3">
               <label class="text-dark">Senha</label>
               <b-form-input
+             
                 required="true"
                 type="password"
                 v-model="userPassword"
+                @keyup.enter="sendPost"
               ></b-form-input>
             </div>
 
@@ -35,16 +37,17 @@
               <p class="text-danger"><u>Esqueceu a senha?</u></p>
             </div>
 
-          <b-alert variant="danger" show>{{errorMessage}}</b-alert>
+          <b-alert variant="danger" :show="errorLabel">{{errorMessage}}</b-alert>
 
 
             <b-row>
               <b-col class="mt-4">
-                <b-overlay :show="show" spinner-variant="danger"
+                <b-overlay :show="loadStatus" spinner-variant="danger"
                   ><b-button
-                    v-show="btnShow"
+                   v-if="!loadStatus"
                     variant="danger"
-                    @click="sendPost()"
+                    
+                    @click="sendPost"
                     >ENTRAR</b-button
                   ></b-overlay
                 >
@@ -64,28 +67,54 @@ export default {
 
   data: function () {
     return {
-      show: false,
-      btnShow: true,
+      
       userEmail: "",
       userPassword: "",
-      errorMessage: '', 
-      haveError: false, 
-
+      
     };
   },
 
   methods: {
     sendPost() {
+
+
       this.$store.commit("SET_USERDATA", {
       user: this.userEmail,
       password: this.userPassword,
       });
       this.$store.dispatch("userAuth");
-      this.show = true;
-      this.btnShow = false;
+      
                
     },
   },
+
+computed: {
+
+    loadStatus: function () {
+
+      return this.$store.getters.loading
+
+    },
+
+    errorLabel: function () {
+
+
+        return this.$store.getters.errorLabel
+
+
+    },
+
+
+    errorMessage: function () {
+
+      return this.$store.state.error
+
+
+    }
+
+
+}
+
 };
 </script>
 

@@ -161,7 +161,8 @@ const store = new Vuex.Store({
     //Data for Errors
 
     error: '',
-    haveError: false, 
+    loading: false, 
+    errorLabel: false, 
 
     
 
@@ -177,7 +178,21 @@ const store = new Vuex.Store({
 
       return state.isLogged
 
+    },
+
+    loading(state) {
+
+
+      return state.loading
+
+    },
+
+    errorLabel(state) {
+
+      return state.errorLabel
+
     }
+    
 
 
   },
@@ -221,10 +236,20 @@ const store = new Vuex.Store({
     },
 
 
+    SET_LOADING(state, loadStatus) {
+
+        state.loading = loadStatus
+
+
+    },
+
 
     SET_ERROR(state, error) {
+      
+      JSON.stringify(error)
       state.error = error
-      state.haveError = true
+      state.errorLabel = true
+      
       
       
     }
@@ -254,7 +279,7 @@ const store = new Vuex.Store({
 
      userAuth({ commit }) {
 
-
+      commit('SET_LOADING', true)
         
        axios
          .post('https://click-up-api.azurewebsites.net/api/login', {
@@ -267,15 +292,16 @@ const store = new Vuex.Store({
 
        
          commit('SET_AUTH', res.status)
+         commit('SET_LOADING', false) 
         
          
 
 
          }).catch((res) => {
 
-         let error = res
+          let error = res
            commit('SET_ERROR', error.response.data.errors)
-           //router.push('/error')
+           commit('SET_LOADING', false) 
            
           
           

@@ -1,7 +1,7 @@
 <template>
   <div style="z-index: 4">
     <b-navbar variant="light">
-      <div class="col- d-flex justify-content-end">
+      <div class="col-2 d-flex justify-content-end">
         <b-navbar-nav class="ms-5">
           <b-nav-item
             class="f1Bold"
@@ -22,7 +22,7 @@
         >
       </b-navbar-nav>
 
-      <div class="col-4">
+      <div class="col-5">
         <b-navbar-brand href="#" class="me-3 ms-5 f1-logo"
           ><b-img
             height="80"
