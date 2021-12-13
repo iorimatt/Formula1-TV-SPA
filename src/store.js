@@ -10,9 +10,9 @@ const store = new Vuex.Store({
   state: {
 
 
-    //User Login States 
+    //User Login States   natan.fonseca@bitzen.com.br // Na@1201206
 
-    userProfile: 'Mateus Franco',
+    userProfile: 'Meu Perfil',
     isLogged: false,
 
     //Data for GlobalFooter
@@ -150,10 +150,10 @@ const store = new Vuex.Store({
     raceName: '',
 
 
-      //Login fields
+    //Login fields
 
     userEmail: '',
-    userPassword: '', 
+    userPassword: '',
 
 
 
@@ -161,10 +161,10 @@ const store = new Vuex.Store({
     //Data for Errors
 
     error: '',
-    loading: false, 
-    errorLabel: false, 
+    loading: false,
+    errorLabel: false,
 
-    
+
 
 
 
@@ -192,7 +192,7 @@ const store = new Vuex.Store({
       return state.errorLabel
 
     }
-    
+
 
 
   },
@@ -205,14 +205,14 @@ const store = new Vuex.Store({
 
 
 
-  
 
-    SET_USERDATA(state, payload){
 
-        state.userEmail = payload.user
-        state.userPassword = payload.password
-       
-    }, 
+    SET_USERDATA(state, payload) {
+
+      state.userEmail = payload.user
+      state.userPassword = payload.password
+
+    },
 
 
     SET_AUTH(state, res) {
@@ -222,10 +222,10 @@ const store = new Vuex.Store({
 
         state.isLogged = !state.isLogged
         router.push('/')
-              
+
       }
 
-      
+
 
     },
 
@@ -238,20 +238,20 @@ const store = new Vuex.Store({
 
     SET_LOADING(state, loadStatus) {
 
-        state.loading = loadStatus
+      state.loading = loadStatus
 
 
     },
 
 
     SET_ERROR(state, error) {
-      
-      JSON.stringify(error)
+
+
       state.error = error
       state.errorLabel = true
-      
-      
-      
+
+
+
     }
 
 
@@ -277,46 +277,46 @@ const store = new Vuex.Store({
 
     },
 
-     userAuth({ commit }) {
+    userAuth({ commit }) {
 
       commit('SET_LOADING', true)
-        
-       axios
-         .post('https://click-up-api.azurewebsites.net/api/login', {
+
+      axios
+        .post('https://click-up-api.azurewebsites.net/api/login', {
 
           email: this.state.userEmail,
           password: this.state.userPassword,
-                 
+
 
         }).then((res) => {
 
-       
-         commit('SET_AUTH', res.status)
-         commit('SET_LOADING', false) 
-        
-         
+
+          commit('SET_AUTH', res.status)
+          commit('SET_LOADING', false)
 
 
-         }).catch((res) => {
+
+
+        }).catch((res) => {
 
           let error = res
-           commit('SET_ERROR', error.response.data.errors)
-           commit('SET_LOADING', false) 
-           
-          
-          
+          commit('SET_ERROR', error.response.data.errors)
+          commit('SET_LOADING', false)
 
 
-       })
 
 
-     },
+
+        })
 
 
-    logAuth({commit}){
+    },
 
-        commit('SET_AUTH', 200)
-        
+
+    logAuth({ commit }) {
+
+      commit('SET_AUTH', 200)
+
 
     }
 

@@ -1,8 +1,9 @@
 <template>
   <div>
         <global-header></global-header>
-       
+     
          <router-view/>
+         
 
          <global-footer></global-footer>
   </div>

@@ -93,6 +93,7 @@
 
 
 
+
 export default {
   name: "GlobalHeader",
 
@@ -110,6 +111,9 @@ export default {
       Categories: this.$store.categoriesMenu,
     };
   },
+
+
+  
 
   computed: {
     SignUp: function () {

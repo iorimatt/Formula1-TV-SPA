@@ -2,6 +2,8 @@ import Vue from 'vue'
 import App from './App.vue'
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
 import {store} from './store'
+import VueLottiePlayer from "vue-lottie-player";
+
 
 
 
@@ -11,6 +13,7 @@ import {store} from './store'
 
 Vue.use(BootstrapVue)
 Vue.use(IconsPlugin)
+Vue.use(VueLottiePlayer);
 
 
 
@@ -28,6 +31,8 @@ Vue.config.productionTip = false
 new Vue({
   store,
   router,
+
+ 
 
   render: h => h(App)
 }).$mount('#app')
