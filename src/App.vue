@@ -1,11 +1,23 @@
 <template>
   <div>
+
+
+<mq-layout mq="mobile"> 
+
+<app-ad></app-ad>
+
+  
+</mq-layout>
+
+  <mq-layout mq="desktop">
         <global-header></global-header>
      
          <router-view/>
          
 
          <global-footer></global-footer>
+  </mq-layout>
+
   </div>
 </template>
 
@@ -14,6 +26,7 @@
 
 import GlobalHeader from './components/GlobalHeader.vue'
 import GlobalFooter from './components/GlobalFooter.vue'
+import AppAd from './components/AppAd.vue'
 
 
 
@@ -21,6 +34,7 @@ export default {
   components: {
     GlobalHeader,
     GlobalFooter,
+    AppAd,
     
     
   }

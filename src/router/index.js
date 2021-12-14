@@ -8,6 +8,7 @@ import { store } from '../store.js'
 import LoginRequire from '../views/LoginRequire.vue'
 
 
+
 Vue.use(VueRouter)
 
 
@@ -24,7 +25,7 @@ const routes = [
     path: '/2021-season',
     name: 'Temporada 2021',
 
-  }, 
+  },
 
   {
 
@@ -38,7 +39,7 @@ const routes = [
 
     path: '/archives',
     name: 'Arquivos',
-    meta: {requireAuth: true},
+    meta: { requireAuth: true },
 
   },
 
@@ -46,23 +47,23 @@ const routes = [
 
     path: '/shows',
     name: 'Programas',
-    meta: {requireAuth: true},
+    meta: { requireAuth: true },
 
   },
 
-    {
+  {
 
-        path: '/login-require',
-        name: 'Login Require',
-        component: LoginRequire
-    },
+    path: '/login-require',
+    name: 'Login Require',
+    component: LoginRequire
+  },
 
 
   {
 
     path: '/documentaries',
     name: 'Documentários',
-    meta: {requireAuth: true},
+    meta: { requireAuth: true },
 
   },
 
@@ -73,19 +74,19 @@ const routes = [
     component: Login
 
 
-  }, 
+  },
 
   {
     path: '/error',
     name: 'Report',
     component: Report
 
-         
-    
-  }
-  
 
-  
+
+  }
+
+
+
 ]
 
 
@@ -96,21 +97,28 @@ const router = new VueRouter({
 })
 
 router.beforeEach((to, from, next) => {
- 
-
-if (to.meta.requireAuth) {
-
-if (store.state.isLogged == false){
-
-    next({name:'Login Require'})
-
-} else next()
 
 
-}
+  if (to.meta.requireAuth) {
 
-else next()
+    if (store.state.isLogged == false) {
+
+      next({ name: 'Report' })
+
+    } else next()
+
+
+  }
+
+  
+
+
+  else next()
 
 })
+
+
+
+
 
 export default router

@@ -3,13 +3,19 @@ import App from './App.vue'
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
 import {store} from './store'
 import VueLottiePlayer from "vue-lottie-player";
+import VueMq from 'vue-mq'
 
 
 
 
 
 
-
+Vue.use(VueMq, {
+  breakpoints: {
+    mobile: 900,
+    desktop: Infinity,
+  }
+})
 
 Vue.use(BootstrapVue)
 Vue.use(IconsPlugin)

@@ -1,6 +1,7 @@
 <template>
   <div>
     <!----main banner--->
+  
     <b-container fluid class="p-0">
       <div class="row buttons-slide d-flex">
         <div class="col-6">
@@ -78,6 +79,7 @@
         </div>
       </div>
     </b-container>
+    
 
     <!----promo banner--->
 
@@ -99,7 +101,7 @@
         class="container promo-carousel d-flex justify-content-center"
         style="height: 45vh"
       >
-        <VueSlickCarousel v-bind="settings" class="mt-5 mb-5 col-6">
+        <VueSlickCarousel  class="mt-5 mb-5 col-6">
           <div
             v-for="promo in PromoBanners"
             :key="promo.name"
@@ -266,6 +268,8 @@ export default {
   height: 40vh;
   background-repeat: no-repeat;
 }
+
+
 
 
 

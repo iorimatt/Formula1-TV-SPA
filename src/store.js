@@ -11,7 +11,7 @@ const store = new Vuex.Store({
 
 
     //User Login States   natan.fonseca@bitzen.com.br // Na@1201206
-
+    logo: "https://upload.wikimedia.org/wikipedia/commons/3/33/F1.svg",
     userProfile: 'Meu Perfil',
     isLogged: false,
 

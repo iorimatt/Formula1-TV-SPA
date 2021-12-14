@@ -102,7 +102,7 @@ export default {
 
       
       UserProfile: this.$store.state.userProfile,
-      F1Logo: "https://upload.wikimedia.org/wikipedia/commons/3/33/F1.svg",
+      F1Logo: this.$store.state.logo,
 
       Options: this.$store.state.optionsMenu,
 
@@ -236,5 +236,11 @@ li {
   font-family: "Formula1-regular";
   font-size: 12px;
   text-align: start;
+}
+
+.navbar-expand .navbar-nav{
+
+flex-wrap: wrap;
+  
 }
 </style>
