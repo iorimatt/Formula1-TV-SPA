@@ -1,8 +1,8 @@
 <template>
   <b-container class="d-flex justify-content-center">
-    <b-col col="2"></b-col>
+    <b-col cols="2"></b-col>
 
-    <b-col col="8" class="mb-5 mt-5">
+    <b-col cols="4" class="mb-5 mt-5">
       
     
       <b-row>
@@ -17,13 +17,14 @@
           name="scooterAnim"
           loop
           :animationData="require('../animations/lock.json')"
+          
         />
       </b-row>
 
       <b-row class="d-flex justify-content-center">
         
 
-<b-col col="6" class="d-flex justify-content-center">
+<b-col cols="6" class="d-flex justify-content-center">
         <b-button
           size="lg"
           variant="danger"
@@ -36,7 +37,7 @@
       </b-row>
     </b-col>
 
-    <b-col col="2"></b-col>
+    <b-col cols="2"></b-col>
   </b-container>
 </template>
 

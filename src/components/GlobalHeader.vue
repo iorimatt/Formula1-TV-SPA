@@ -66,14 +66,14 @@
 
     <b-navbar class="p-0 local-header f1-container">
       <div class="col-3 d-flex justify-content-end">
-        <b-nav-brand
+        <b-navbar-brand
           ><router-link to="/"
             ><b-img
               class="m-3"
               height="25"
               src="https://f1tv.formula1.com/static/3adbb5b25a6603f282796363a74f8cf3.png"
             ></b-img></router-link
-        ></b-nav-brand>
+        ></b-navbar-brand>
       </div>
       <div class="col-7 ms-3">
         <b-nav-item
@@ -112,7 +112,13 @@ export default {
     };
   },
 
+methods: {
+  logOut: function (){
 
+        return this.$store.dispatch('logAuth')
+        
+    }
+},
   
 
   computed: {
@@ -121,12 +127,7 @@ export default {
     },
 
 
-    logOut: function (){
-
-        return this.$store.dispatch('logAuth')
-        
-    },
-
+   
     IsLogged: function() {
       
     return this.$store.getters.auth

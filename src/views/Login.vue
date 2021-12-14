@@ -25,8 +25,7 @@
             <div class="mb-3 mt-3">
               <label class="text-dark">Senha</label>
               <b-form-input
-             
-                required="true"
+            
                 type="password"
                 v-model="userPassword"
                 @keyup.enter="sendPost"
@@ -53,7 +52,7 @@
                 >
               </b-col>
             </b-row>
-            <h3 class="text-black">{{ Logged }}</h3>
+            
           </b-row>
         </b-col>
       </b-row>
@@ -68,8 +67,8 @@ export default {
   data: function () {
     return {
       
-      userEmail: "",
-      userPassword: "",
+      userEmail: "natan.fonseca@bitzen.com.br",
+      userPassword: "Na@1201206",
       
     };
   },

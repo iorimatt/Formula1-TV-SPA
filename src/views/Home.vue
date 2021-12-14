@@ -1,8 +1,33 @@
 <template>
   <div>
     <!----main banner--->
-  
+
     <b-container fluid class="p-0">
+
+
+        <b-modal hide-footer id="only-subs">
+          
+
+          <b-row class="justify-content-center f1-font text-center mb-3 mt-3"> <h5>Inscreva-se para assistir</h5></b-row>
+          <b-row class="justify-content-center text-center titillium-regular"> <p>Você precisa ter uma assinatura F1 para assistir a conteúdos exclusivos
+Já é titular de uma conta F1? Entrar</p></b-row>
+          <b-row class="justify-content-center"> 
+            
+            <b-col cols=4></b-col>
+            <b-col cols=8 class="p-3">
+
+                <b-button variant="danger" :to="{ path: '/login' }" >SE INSCREVA</b-button>
+
+            </b-col>
+            
+            
+            </b-row>
+         
+          
+          
+          </b-modal>
+
+
       <div class="row buttons-slide d-flex">
         <div class="col-6">
           <b-button variant="transparent" @click="showPrev()">
@@ -42,9 +67,11 @@
                         <div class="col-6 p-1 mt-3 text-white">
                           <div class="row align-items-center">
                             <div class="col-2">
-                              <b-button class="button-play" :to="banner.linkTo"
+                              <b-button
+                                class="button-play"
+                                @click="authVerify(banner.id)"
                                 ><b-icon-play
-                                  class="mt-4"
+                                  class="mt-1"
                                   scale="3"
                                 ></b-icon-play>
                               </b-button>
@@ -79,7 +106,6 @@
         </div>
       </div>
     </b-container>
-    
 
     <!----promo banner--->
 
@@ -89,7 +115,7 @@
           Assine a F1TV
         </h3>
 
-        <b-button class="col-4 m-3" variant="danger"> SE INSCREVA</b-button>
+        <b-button class="col-4 m-3" variant="danger" :to="{ path: '/login' }" > SE INSCREVA</b-button>
         <h3 class="d-flex justify-content-center text-white">
           TODA A F1 AO VIVO
         </h3>
@@ -101,7 +127,7 @@
         class="container promo-carousel d-flex justify-content-center"
         style="height: 45vh"
       >
-        <VueSlickCarousel  class="mt-5 mb-5 col-6">
+        <VueSlickCarousel class="mt-5 mb-5 col-6">
           <div
             v-for="promo in PromoBanners"
             :key="promo.name"
@@ -122,8 +148,8 @@
             <div class="row d-flex align-items-end">
               <b-card-img class="p-0 m-0" :src="content.img"> </b-card-img>
 
-              <b-button :to="content.link" class="button-play position-absolute"
-                ><b-icon-play scale="3" class="mt-4"></b-icon-play
+              <b-button @click="authVerify(content.id)" class="button-play position-absolute"
+                ><b-icon-play scale="3" class="mt-1"></b-icon-play
               ></b-button>
             </div>
 
@@ -147,9 +173,9 @@
               <b-card-img class="p-0 m-0" :src="banner.img"> </b-card-img>
 
               <b-button
-                :to="banner.linkTo"
+                @click="authVerify(banner.id)"
                 class="button-play position-absolute"
-                ><b-icon-play scale="3" class="mt-4"></b-icon-play
+                ><b-icon-play scale="3" class="mt-1"></b-icon-play
               ></b-button>
             </div>
 
@@ -165,6 +191,7 @@
 </template>
 
 <script>
+import router from "../router/index";
 import VueSlickCarousel from "vue-slick-carousel";
 import "vue-slick-carousel/dist/vue-slick-carousel.css";
 
@@ -192,6 +219,7 @@ export default {
       Contents: this.$store.state.homeCardContents,
       Banners: this.$store.state.homeBanners,
       PromoBanners: this.$store.state.homePromoBanners,
+      isLogged: this.$store.state.isLogged,
     };
   },
 
@@ -203,15 +231,24 @@ export default {
     showPrev() {
       this.$refs.carousel.prev();
     },
+
+    authVerify(id) {
+
+      const banner = this.Banners;
+
+      if (this.isLogged === false) {
+        return  this.$bvModal.show('only-subs');
+      } 
+      
+      else return router.push(banner[id].linkTo.toString());
+
+
+    },
   },
 };
 </script>
 
 <style scoped>
-
-
-
-
 .bg-slide {
   background-image: url("https://cdn.wallpapersafari.com/8/77/LH7RTv.jpg");
 
@@ -268,9 +305,4 @@ export default {
   height: 40vh;
   background-repeat: no-repeat;
 }
-
-
-
-
-
 </style>

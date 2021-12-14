@@ -10,7 +10,7 @@ const store = new Vuex.Store({
   state: {
 
 
-    //User Login States   natan.fonseca@bitzen.com.br // Na@1201206
+    //User Login States   
     logo: "https://upload.wikimedia.org/wikipedia/commons/3/33/F1.svg",
     userProfile: 'Meu Perfil',
     isLogged: false,
@@ -85,27 +85,31 @@ const store = new Vuex.Store({
 
     homeBanners: [
       {
+        id: 0,
         name: "Formula 1 Sprint Race - São Paulo",
         img: "https://f1tv.formula1.com/image-resizer/image/1000004831-283d7c1e-a0a8-4d06-8d7f-21d9962c410d?w=1328&h=569&q=HI&o=L",
         linkTo: "/video1",
         videoDuration: "00:23:10",
       },
       {
+        id: 1,
         name: "Haas Ganha novo patrocinador",
         img: "https://f1tv.formula1.com/image-resizer/image/1000004833-56c856fa-7407-43b9-93da-7949172a6737?w=1328&h=569&q=HI&o=L",
         linkTo: "/video2",
         videoDuration: "00:32:05",
       },
       {
+        id: 2,
         name: "Aquecimento para o fim de semana",
         img: "https://f1tv.formula1.com/image-resizer/image/1000004944-ab2d95ad-a558-4893-aad9-609d080ef16f?w=1328&h=569&q=HI&o=L",
-        linkTo: "/video2",
+        linkTo: "/video3",
         videoDuration: "00:10:54",
       },
       {
+        id: 3,
         name: "F1 Team Profile - Aston Martin ",
         img: "https://f1tv.formula1.com/image-resizer/image/1000004830-1edcf275-4406-4888-b20a-639992bae5bc?w=1328&h=569&q=HI&o=L",
-        linkTo: "/video2",
+        linkTo: "/video4",
         videoDuration: "00:08:20",
       },
     ],
@@ -124,21 +128,24 @@ const store = new Vuex.Store({
 
     homeCardContents: [
       {
+        id:0,
         name: "WEEKEND DEBRIEF - SÃO PAULO",
         tag: "00:26:01",
-        link: "content1",
+        linkTo: "content1",
         img: "https://f1tv.formula1.com/image-resizer/image/1000004973-22faa856-391b-43ea-b4d6-436e5f53e12d?w=354&h=199&q=HI&o=L",
       },
       {
+        id:1,
         name: "ANÁLISE DE JOLYON PALMER - SÃO PAULO",
         tag: "00:16:01",
-        link: "content2",
+        linkTo: "content2",
         img: "https://f1tv.formula1.com/image-resizer/image/1000004972-60dd10a6-360e-4c3a-a585-e3ec8367c4a4?w=354&h=199&q=HI&o=L",
       },
       {
+        id:2,
         name: "TOP 10 ONBOARDS - SÃO PAULO",
         tag: "00:43:01",
-        link: "content3",
+        linkTo: "content3",
         img: "https://f1tv.formula1.com/image-resizer/image/1000004963-30580560-896f-4add-80fc-1723848d3fb3?w=354&h=199&q=HI&o=L",
       },
     ],

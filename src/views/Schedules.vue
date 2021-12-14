@@ -25,7 +25,7 @@
         ></b-spinner>
         
       </div>
-      <b-row v-for="race in raceUpcoming" :key="race" class="d-flex mt-5">
+      <b-row v-for="race in raceUpcoming" :key="race.name" class="d-flex mt-5">
         <h2 class="f1-font text-white">{{ race.raceName }}</h2>
         <p class="f1-font-regular text-white">
           Data da Corrida | {{ race.date.split("-").reverse().join("/") }}

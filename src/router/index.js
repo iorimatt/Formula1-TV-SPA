@@ -103,7 +103,7 @@ router.beforeEach((to, from, next) => {
 
     if (store.state.isLogged == false) {
 
-      next({ name: 'Report' })
+      next({ name: 'Login Require' })
 
     } else next()
 
