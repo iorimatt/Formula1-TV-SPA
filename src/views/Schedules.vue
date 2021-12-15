@@ -1,20 +1,14 @@
-
-
-
-
 <template>
   <div>
     <b-container class="mt-5" style="padding: 0vh 20vh">
       <b-row class="d-flex">
         <h2 class="f1-font text-white">Horários</h2>
-
         <p class="f1-font text-white">
           Horários de F2 e F3 serão anunciados mais perto do fim de semana do
           Grande Prêmio
         </p>
       </b-row>
     </b-container>
-
     <b-container style="padding: 0vh 20vh">
       <div class="text-center">
         <b-spinner
@@ -30,7 +24,6 @@
         <p class="f1-font-regular text-white">
           Data da Corrida | {{ race.date.split("-").reverse().join("/") }}
         </p>
-
         <b-row class="d-flex mt-5">
           <div>
             <h5 class="f1-font text-white">Agenda da Semana</h5>
@@ -62,47 +55,35 @@
     
   </div>
 </template>
-
 <script>
 //import axios from "axios";
-
 export default {
   data: function () {
     return {
-       roundsRemaining: 2,
+       roundsRemaining: this.$store.state.roundsRemaining,
        error: this.$store.state.error
     };
   },
-
   computed: {
     raceList() {
       return this.$store.state.raceList;
     },
-
     raceUpcoming() {
       return this.raceList.slice("-" + this.roundsRemaining);
     },
   },
-
   methods: {
     loadStatus() {
-
         if (this.raceUpcoming.length > 0) {
-
           return false;
-
        }
-
        return true;
-
        },},
-
   mounted() {
     this.$store.dispatch("getRaceList");
     this.loadStatus();
   },
 };
 </script>
-
 <style>
 </style>

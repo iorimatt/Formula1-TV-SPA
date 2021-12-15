@@ -1,7 +1,6 @@
 <template>
   <b-container class="d-flex justify-content-center">
     <b-col cols="2"></b-col>
-
     <b-col cols="4" class="mb-5 mt-5">
       
     
@@ -11,7 +10,6 @@
         </h4>
       </b-row>
        
-
       <b-row class="d-flex justify-content-center">
         <v-lottie-player
           name="scooterAnim"
@@ -20,10 +18,8 @@
           
         />
       </b-row>
-
       <b-row class="d-flex justify-content-center">
         
-
 <b-col cols="6" class="d-flex justify-content-center">
         <b-button
           size="lg"
@@ -33,23 +29,17 @@
           >SE INSCREVA</b-button
         >
 </b-col>
-
       </b-row>
     </b-col>
-
     <b-col cols="2"></b-col>
   </b-container>
 </template>
-
 <script>
 import VueLottiePlayer from "vue-lottie-player";
-
 export default {
   components: {
     vLottiePlayer: VueLottiePlayer,
   },
-
-
   data() {
     return {
     show: true
@@ -57,6 +47,5 @@ export default {
   },
 };
 </script>
-
 <style>
 </style>

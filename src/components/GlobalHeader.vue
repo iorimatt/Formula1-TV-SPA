@@ -12,7 +12,6 @@
           >
         </b-navbar-nav>
       </div>
-
       <b-navbar-nav class="ms-auto menu-options f1Cat p-0">
         <b-nav-item
           v-for="option in Options"
@@ -21,7 +20,6 @@
           >{{ option.name }}</b-nav-item
         >
       </b-navbar-nav>
-
       <div class="col-5">
         <b-navbar-brand href="#" class="me-3 ms-5 f1-logo"
           ><b-img
@@ -32,7 +30,6 @@
             alt="Responsive image"
           ></b-img
         ></b-navbar-brand>
-
         <b-button
           v-if="IsLogged"
           v-b-modal="'modalUser'"
@@ -41,29 +38,27 @@
           ><b-icon-person class="me-1 pe-1"></b-icon-person
           >{{ UserProfile }}</b-button
         >
-
         <b-button v-if="SignUp" to="/login" variant="dark" class="me-3 pe-3"
           ><b-icon-person></b-icon-person>ENTRAR</b-button
         >
-
-        <b-button v-if="SignUp" variant="danger">SE INSCREVA</b-button>
-
+        <b-button v-if="SignUp" variant="danger" :to="{ path: '/login' }">SE INSCREVA</b-button>
         <b-modal hide-footer v-if="IsLogged" id="modalUser">
           <div class="d-flex justify-content-center">
             <div>
               <h4 class="mb-3">{{ UserProfile }}</h4>
             </div>
           </div>
-
           <div class="d-flex justify-content-center">
-            <b-button @click="logOut()" class="col-6 modal-button text-center" variant="danger"
+            <b-button
+              @click="logOut()"
+              class="col-6 modal-button text-center"
+              variant="danger"
               >LOGOUT</b-button
             >
           </div>
         </b-modal>
       </div>
     </b-navbar>
-
     <b-navbar class="p-0 local-header f1-container">
       <div class="col-3 d-flex justify-content-end">
         <b-navbar-brand
@@ -88,60 +83,33 @@
     </b-navbar>
   </div>
 </template>
-
 <script>
-
-
-
-
 export default {
   name: "GlobalHeader",
-
   data: function () {
     return {
-
-      
       UserProfile: this.$store.state.userProfile,
       F1Logo: this.$store.state.logo,
-
       Options: this.$store.state.optionsMenu,
-
       SubOptions: this.$store.state.SubOptionsMenu,
-
       Categories: this.$store.categoriesMenu,
     };
   },
-
-methods: {
-  logOut: function (){
-
-        return this.$store.dispatch('logAuth')
-        
-    }
-},
-  
-
+  methods: {
+    logOut: function () {
+      return this.$store.dispatch("logOut");
+    },
+  },
   computed: {
     SignUp: function () {
       return !this.IsLogged;
     },
-
-
-   
-    IsLogged: function() {
-      
-    return this.$store.getters.auth
-   
-
-    }
-
-   
-
-  
-   },
+    IsLogged: function () {
+      return this.$store.getters.auth;
+    },
+  },
 };
 </script>
-
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 @font-face {
@@ -149,41 +117,34 @@ methods: {
   src: local("Formula1"), url("../fonts/Formula1-Bold_web_0.ttf");
   format: ("ttf");
 }
-
 @font-face {
   font-family: "Titillium";
   src: local("Titillium"), url("../fonts/TitilliumWeb-Regular.ttf");
   format: ("ttf");
 }
-
 @font-face {
   font-family: "Formula1-regular";
   src: local("Formula1-regular"), url("../fonts/Formula1-Regular_web_0.ttf");
   format: ("ttf");
 }
-
 ul {
   list-style-type: none;
   padding: 0px;
 }
-
 li {
   display: inline-block;
   margin: 0 10px;
   color: black;
   padding: 0px;
 }
-
 .link {
   text-decoration: none;
-
   display: inline-block;
   position: relative;
   z-index: 1;
   padding: 2em;
   margin: -2em;
 }
-
 .f1-logo {
   border-left-color: #d8d8d8;
   border-right: #d8d8d8;
@@ -191,12 +152,10 @@ li {
   border-style: solid;
   padding: 0px 2vw;
 }
-
 .f1Bold {
   font-family: "Formula1";
   font-size: 15px;
 }
-
 .f1Cat {
   font-family: "Titillium";
   font-size: 12px;
@@ -204,7 +163,6 @@ li {
   font-weight: 600;
   padding-bottom: 0px;
 }
-
 .f1Cat .nav-link:hover {
   border-bottom-color: red;
   border-style: solid;
@@ -212,11 +170,9 @@ li {
   box-sizing: border-box;
   padding-bottom: 0px;
 }
-
 .f1Bold .nav-link:hover {
   color: black;
 }
-
 .sub-menu a {
   color: white;
   font-family: "Formula1-regular";
@@ -224,24 +180,18 @@ li {
   font-weight: 300;
   font-size: 14px;
 }
-
 .f1-container {
   background-color: #e10600;
 }
-
 .sub-menu a:hover {
   background-color: #15151e;
 }
-
 .modal-button {
   font-family: "Formula1-regular";
   font-size: 12px;
   text-align: start;
 }
-
-.navbar-expand .navbar-nav{
-
-flex-wrap: wrap;
-  
+.navbar-expand .navbar-nav {
+  flex-wrap: wrap;
 }
 </style>

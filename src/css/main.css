@@ -1,84 +1,51 @@
-
-
-
 body {
-
   background-color: black !important;
-
-
 }
-
-
 @font-face {
   font-family: "Formula1-regular";
   src: local("Formula1-regular"), url("../fonts/Formula1-Regular_web_0.ttf");
   format: ("ttf");
 }
-
 @font-face {
   font-family: "TitiliumWeb-regular";
   src: local("TitiliumWeb-regular"), url("../fonts/TitilliumWeb-Regular.ttf");
   format: ("ttf");
 }
-
-
-
 @font-face {
   font-family: "Formula1";
   src: local("Formula1"), url("../fonts/Formula1-Bold_web_0.ttf");
   format: ("ttf");
 }
-
 .f1-font {
   font-family: 'Formula1';
  
-
 }
-
 .f1-font-regular {
-
 font-family: 'Formula1-regular';
-
 }
   
-
 .video-tag {
-
-
   color: var(--secondary);
   font-size: 14px;
-
-
-
 }
-
-
 .titillium-regular {
-
   font-family: "TitiliumWeb-regular"
   
-
 }
-
-
 .card {
   border-radius: 15px;
 }
-
 .card-body {
   padding: 0px 12px;
 }
-
 .card-title {
   font-size: 16px;
   margin-bottom: 8vh;
 }
-
 .card-header {
   font-size: 14px;
   color: var(--secondary);
 }
-
 .card-play {
   position: relative;
   bottom: 16vh;
@@ -87,5 +54,3 @@ font-family: 'Formula1-regular';
   height: 70px;
   width: 70px;
 }
-
-
