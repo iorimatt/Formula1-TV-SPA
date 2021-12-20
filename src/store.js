@@ -140,7 +140,7 @@ const store = new Vuex.Store({
     //Data For Schedules
     raceList: [],
     raceName: '',
-    roundsRemaining: 3,
+    roundsRemaining: 20,
     //Login fields
     userEmail: '',
     userPassword: '',
@@ -192,9 +192,10 @@ const store = new Vuex.Store({
   actions: {
     getRaceList({ commit }) {
       axios
-        .get("http://ergast.com/api/f1/current.json")
+        .get("http://localhost:3000/racelist")
         .then((res) => {
-          commit('SET_RACELIST', res.data.MRData.RaceTable.Races)
+          console.log(res.data)
+          commit('SET_RACELIST', res.data)
         }).catch((res) => {
           let error = res.toString()
           commit('SET_ERROR', error)
