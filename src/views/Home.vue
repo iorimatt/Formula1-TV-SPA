@@ -2,24 +2,25 @@
   <div>
     <!----main banner--->
     <b-container fluid class="p-0">
-        <b-modal hide-footer id="only-subs">
-          
-          <b-row class="justify-content-center f1-font text-center mb-3 mt-3"> <h5>Inscreva-se para assistir</h5></b-row>
-          <b-row class="justify-content-center text-center titillium-regular"> <p>Você precisa ter uma assinatura F1 para assistir a conteúdos exclusivos
-Já é titular de uma conta F1? Entrar</p></b-row>
-          <b-row class="justify-content-center"> 
-            
-            <b-col cols=4></b-col>
-            <b-col cols=8 class="p-3">
-                <b-button variant="danger" :to="{ path: '/login' }" >SE INSCREVA</b-button>
-            </b-col>
-            
-            
-            </b-row>
-         
-          
-          
-          </b-modal>
+      <b-modal hide-footer id="only-subs">
+        <b-row class="justify-content-center f1-font text-center mb-3 mt-3">
+          <h5>Inscreva-se para assistir</h5></b-row
+        >
+        <b-row class="justify-content-center text-center titillium-regular">
+          <p>
+            Você precisa ter uma assinatura F1 para assistir a conteúdos
+            exclusivos Já é titular de uma conta F1? Entrar
+          </p></b-row
+        >
+        <b-row class="justify-content-center">
+          <b-col cols="4"></b-col>
+          <b-col cols="8" class="p-3">
+            <b-button variant="danger" :to="{ path: '/login' }"
+              >SE INSCREVA</b-button
+            >
+          </b-col>
+        </b-row>
+      </b-modal>
       <div class="row buttons-slide d-flex">
         <div class="col-6">
           <b-button variant="transparent" @click="showPrev()">
@@ -47,7 +48,7 @@ Já é titular de uma conta F1? Entrar</p></b-row>
             <div
               v-bind:style="{ 'background-image': 'url(' + banner.img + ')' }"
               class="banner bg-primary text-white col-8 d-flex align-items-end"
-              v-for="banner in Banners"
+              v-for="banner in BannerList"
               :key="banner.name"
             >
               <div class="container-fluid">
@@ -60,7 +61,7 @@ Já é titular de uma conta F1? Entrar</p></b-row>
                             <div class="col-2">
                               <b-button
                                 class="button-play"
-                                @click="authVerify(banner.id)"
+                                @click="authVerify(banner.name)"
                                 ><b-icon-play
                                   class="mt-1"
                                   scale="3"
@@ -102,7 +103,9 @@ Já é titular de uma conta F1? Entrar</p></b-row>
         <h3 class="d-flex justify-content-center f1-font text-white">
           Assine a F1TV
         </h3>
-        <b-button class="col-4 m-3" variant="danger" :to="{ path: '/login' }" > SE INSCREVA</b-button>
+        <b-button class="col-4 m-3" variant="danger" :to="{ path: '/login' }">
+          SE INSCREVA</b-button
+        >
         <h3 class="d-flex justify-content-center text-white">
           TODA A F1 AO VIVO
         </h3>
@@ -132,7 +135,9 @@ Já é titular de uma conta F1? Entrar</p></b-row>
           <b-card bg-variant="dark" class="text-white p-0">
             <div class="row d-flex align-items-end">
               <b-card-img class="p-0 m-0" :src="content.img"> </b-card-img>
-              <b-button @click="authVerify(content.id)" class="button-play position-absolute"
+              <b-button
+                @click="authVerify(content.id)"
+                class="button-play position-absolute"
                 ><b-icon-play scale="3" class="mt-1"></b-icon-play
               ></b-button>
             </div>
@@ -182,7 +187,7 @@ export default {
     return {
       //banner slick config
       setting: {
-        centerMode: true,
+        centerMode: false,
         slidesToShow: 1,
         speed: 500,
         arrows: false,
@@ -190,9 +195,11 @@ export default {
       },
       //data
       Contents: this.$store.state.homeCardContents,
-      Banners: this.$store.state.homeBanners,
       PromoBanners: this.$store.state.homePromoBanners,
       isLogged: this.$store.state.isLogged,
+      Banners: this.$store.state.homeBanners, 
+     
+      
     };
   },
   methods: {
@@ -204,13 +211,33 @@ export default {
     },
     authVerify(id) {
       const banner = this.Banners;
+      var position = "";
+
       if (this.isLogged === false) {
-        return  this.$bvModal.show('only-subs');
-      } 
+        return this.$bvModal.show("only-subs");
+      } else
+        position = banner
+          .map(function (e) {
+            return e.name;
+          })
+          .indexOf(id);
+      router.push(banner[position].linkTo.toString());
       
-      else return router.push(banner[id].linkTo.toString());
     },
   },
+
+
+  computed: {
+    BannerList() {
+      return this.Banners
+    }
+  },
+
+  mounted() {
+    this.$store.dispatch("getBannerHome");
+   
+  }
+
 };
 </script>
 <style scoped>

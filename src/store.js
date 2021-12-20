@@ -73,36 +73,10 @@ const store = new Vuex.Store({
       { name: "F3™", link: "f3" },
     ],
     // Data for Home.vue
-    homeBanners: [
-      {
-        id: 0,
-        name: "Formula 1 Sprint Race - São Paulo",
-        img: "https://f1tv.formula1.com/image-resizer/image/1000004831-283d7c1e-a0a8-4d06-8d7f-21d9962c410d?w=1328&h=569&q=HI&o=L",
-        linkTo: "/video1",
-        videoDuration: "00:23:10",
-      },
-      {
-        id: 1,
-        name: "Haas Ganha novo patrocinador",
-        img: "https://f1tv.formula1.com/image-resizer/image/1000004833-56c856fa-7407-43b9-93da-7949172a6737?w=1328&h=569&q=HI&o=L",
-        linkTo: "/video2",
-        videoDuration: "00:32:05",
-      },
-      {
-        id: 2,
-        name: "Aquecimento para o fim de semana",
-        img: "https://f1tv.formula1.com/image-resizer/image/1000004944-ab2d95ad-a558-4893-aad9-609d080ef16f?w=1328&h=569&q=HI&o=L",
-        linkTo: "/video3",
-        videoDuration: "00:10:54",
-      },
-      {
-        id: 3,
-        name: "F1 Team Profile - Aston Martin ",
-        img: "https://f1tv.formula1.com/image-resizer/image/1000004830-1edcf275-4406-4888-b20a-639992bae5bc?w=1328&h=569&q=HI&o=L",
-        linkTo: "/video4",
-        videoDuration: "00:08:20",
-      },
-    ],
+
+    
+
+    homeBanners: [],
     homePromoBanners: [
       {
         img: "https://ott-img.formula1.com/subscription/ProImagesNoBG/live-nocut.png?w=690&h=388&q=HI&o=L",
@@ -187,15 +161,37 @@ const store = new Vuex.Store({
       state.error = error
       state.errorLabel = true
     },
+
+    SET_BANNER(state, banners){
+
+        state.homeBanners = banners
+
+    }
+
   },
   //actions 
   actions: {
+
+
+    getBannerHome({commit}){
+
+      axios.get("http://localhost:3000/bannerHome")
+      .then((res)=>{
+        console.log(res.data)
+        commit('SET_BANNER', res.data)
+      }).catch((res)=>{
+        let error = res.toString()
+        commit('SET_ERROR', error)
+        router.push('/error')
+      })
+    },
+
+
     getRaceList({ commit }) {
       axios
         .get("http://localhost:3000/racelist")
         .then((res) => {
-          console.log(res.data)
-          commit('SET_RACELIST', res.data)
+           commit('SET_RACELIST', res.data)
         }).catch((res) => {
           let error = res.toString()
           commit('SET_ERROR', error)
