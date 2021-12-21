@@ -80,7 +80,7 @@ export default {
        return true;
        },},
   mounted() {
-    this.$store.dispatch("getRaceList");
+    this.$store.getters.raceList;
     this.loadStatus();
   },
 };

@@ -88,29 +88,7 @@ const store = new Vuex.Store({
         img: "https://ott-img.formula1.com/subscription/ProImagesNoBG/shows.png?w=690&h=388&q=HI&o=L",
       },
     ],
-    homeCardContents: [
-      {
-        id: 0,
-        name: "WEEKEND DEBRIEF - SÃO PAULO",
-        tag: "00:26:01",
-        linkTo: "content1",
-        img: "https://f1tv.formula1.com/image-resizer/image/1000004973-22faa856-391b-43ea-b4d6-436e5f53e12d?w=354&h=199&q=HI&o=L",
-      },
-      {
-        id: 1,
-        name: "ANÁLISE DE JOLYON PALMER - SÃO PAULO",
-        tag: "00:16:01",
-        linkTo: "content2",
-        img: "https://f1tv.formula1.com/image-resizer/image/1000004972-60dd10a6-360e-4c3a-a585-e3ec8367c4a4?w=354&h=199&q=HI&o=L",
-      },
-      {
-        id: 2,
-        name: "TOP 10 ONBOARDS - SÃO PAULO",
-        tag: "00:43:01",
-        linkTo: "content3",
-        img: "https://f1tv.formula1.com/image-resizer/image/1000004963-30580560-896f-4add-80fc-1723848d3fb3?w=354&h=199&q=HI&o=L",
-      },
-    ],
+   
     //Data For Schedules
     raceList: [],
     raceName: '',
@@ -131,9 +109,23 @@ const store = new Vuex.Store({
     loading(state) {
       return state.loading
     },
+  
+    banner(state) {
+return state.homeBanners
+
+    },
+
     errorLabel(state) {
       return state.errorLabel
+    },
+
+    racelist(state){
+
+      return state.raceList
+
     }
+
+   
   },
   //mutations
   mutations: {
@@ -149,7 +141,7 @@ const store = new Vuex.Store({
     },
     LOG_OUT(state) {
       state.isLogged = !state.isLogged
-      localStorage.removeItem('token')
+      sessionStorage.removeItem('token')
     },
     SET_RACELIST(state, race) {
       state.raceList = race
@@ -177,7 +169,7 @@ const store = new Vuex.Store({
 
       axios.get("http://localhost:3000/bannerHome")
       .then((res)=>{
-        console.log(res.data)
+        
         commit('SET_BANNER', res.data)
       }).catch((res)=>{
         let error = res.toString()

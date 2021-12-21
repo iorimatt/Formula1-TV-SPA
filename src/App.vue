@@ -21,16 +21,26 @@ export default {
     AppAd,
   },
   methods: {
-    isLoggedIn() {
+
+
+      isLoggedIn() {
       const token = sessionStorage.getItem("token");
       if (token) {
         this.$store.dispatch("logIn");
       }
+
+      
     },
   },
-  mounted() {
-    this.isLoggedIn();
-  },
+
+
+beforeMount () {
+  this.isLoggedIn();
+  this.$store.dispatch("getBannerHome");
+  this.$store.dispatch("getRaceList");
+},
+
+
 };
 </script>
 <style>
