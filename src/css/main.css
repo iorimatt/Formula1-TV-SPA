@@ -54,3 +54,9 @@ font-family: 'Formula1-regular';
   height: 70px;
   width: 70px;
 }
+
+.carousel-control-prev-icon, .carousel-control-next-icon {
+
+  width: 60vh;
+    
+  }

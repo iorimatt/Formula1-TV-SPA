@@ -2,6 +2,9 @@
   <div>
     <!----main banner--->
     <b-container fluid class="p-0">
+     
+     
+      
       <b-modal hide-footer id="only-subs">
         <b-row class="justify-content-center f1-font text-center mb-3 mt-3">
           <h5>Inscreva-se para assistir</h5></b-row
@@ -22,15 +25,16 @@
         </b-row>
       </b-modal>
 
+
+
       <div
         style="background-color: #15151e"
-        class="d-flex justify-content-center "
+        class="row d-flex justify-content-center "
       >
 
       
         <b-carousel
           id="carousel-fade"
-          style="text-shadow: 0px 0px 2px #000"
           fade
           indicators
           controls="true"
@@ -41,13 +45,13 @@
 
          
           <b-carousel-slide
+         
             v-for="content in BannerList"
             :key="content.name"
             :img-src="content.img"
           >
 
-
-
+          
             <b-container>
               <b-row>
                 <b-col cols="4">
@@ -73,13 +77,19 @@
                 </b-col>
               </b-row>
             </b-container>
+
+             
            
 
           </b-carousel-slide>
-       
+    
 
         </b-carousel>
+
+           <b-row class=" interactive-poster-gradient" style="position: relative; z-index:1;">TESTEaaaas</b-row>
       </div>
+     
+     
     </b-container>
 
     <!----promo banner--->
@@ -219,6 +229,8 @@ export default {
 };
 </script>
 <style scoped>
+
+
 .bg-slide {
   background-image: url("https://cdn.wallpapersafari.com/8/77/LH7RTv.jpg");
   background-size: cover;
